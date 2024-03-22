@@ -1,0 +1,67 @@
+{
+  "name": "clearly_server",
+  "version": "1.0.0",
+  "description": "Clearly",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run compile && nodemon --exec ts-node src/index.ts",
+    "generate": "graphql-codegen --config codegen.yml",
+    "compile": "npm run generate",
+    "test": "jest --watchAll --detectOpenHandles",
+    "migrate": "npx sequelize-cli db:migrate",
+    "docker": "docker-compose up -d",
+    "migrate:undo": "npx sequelize-cli db:migrate:undo",
+    "migrate:undo:all": "npx sequelize-cli db:migrate:undo:all",
+    "seed:all": "npx sequelize-cli db:seed:all",
+    "lint": "eslint . --ext .ts",
+    "setup": "npm run docker && npm install && npm run migrate && npm run seed:all && npm run start"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^4.10.0",
+    "@babel/cli": "~7.16.0",
+    "@babel/core": "~7.16.0",
+    "@babel/node": "~7.16.0",
+    "@babel/preset-env": "~7.16.4",
+    "@babel/register": "~7.16.0",
+    "dataloader": "^2.2.2",
+    "graphql": "^16.8.1",
+    "graphql-tag": "^2.12.6",
+    "graphql-tools": "^9.0.1",
+    "pg": "^8.11.3",
+    "regenerator-runtime": "~0.13.9",
+    "sequelize": "^6.35.2",
+    "sequelize-cli": "^6.6.2"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.23.3",
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/typescript": "^4.0.4",
+    "@graphql-codegen/typescript-resolvers": "^4.0.4",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/glob": "^8.1.0",
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20.10.5",
+    "babel-jest": "~27.3.1",
+    "babel-plugin-graphql-tag": "^3.3.0",
+    "babel-plugin-import-graphql": "^2.8.1",
+    "babel-plugin-inline-import": "^3.0.0",
+    "eslint": "^8.56.0",
+    "jest": "~27.3.1",
+    "nodemon": "^3.0.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    },
+    "setupFilesAfterEnv": [
+      "./test-setup.js"
+    ]
+  }
+}

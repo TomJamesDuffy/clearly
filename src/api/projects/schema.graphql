@@ -1,0 +1,25 @@
+enum Status {
+  IN_PROGRESS
+  COMPLETE
+  PENDING
+  CANCELLED
+}
+
+type Project {
+  id: ID!
+  url: String!
+  status: Status!
+  country: String
+  createdDate: String!
+  updatedDate: String!
+}
+
+type Query {
+  projects: [Project]
+  project(id: ID!): Project
+}
+
+type Mutation {
+  createProject(url: String!, status: Status!, country: String): Project
+  deleteProject(id: ID!): Boolean
+}

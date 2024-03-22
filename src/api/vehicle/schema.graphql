@@ -1,0 +1,8 @@
+type Vehicle {
+  id: ID!
+  type: String!
+  licensePlate: String!
+  capacity: Float!
+  createdDate: String!
+  updatedDate: String!
+}

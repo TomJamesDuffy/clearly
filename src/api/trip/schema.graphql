@@ -1,0 +1,29 @@
+type Trip {
+  id: ID!
+  project: Project!
+  vehicle: Vehicle!
+  distanceKm: Int!
+  createdDate: String!
+  updatedDate: String!
+  cargos: [Cargo!]!
+}
+
+type TripCargo {
+  trip: Trip!
+  cargo: Cargo!
+  quantity: Int!
+  status: String!
+  createdDate: String!
+  updatedDate: String!
+}
+
+type TripsGroupedByProject {
+  project: Project!
+  trips: [Trip]!
+}
+
+type Query {
+  trips: [Trip]
+  trip(id: ID!): Trip
+  getTripsByProject: [TripsGroupedByProject]
+}

@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  # Main PostgreSQL service
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER=clearly
+      - POSTGRES_PASSWORD=verysecretpassword
+      - POSTGRES_DB=projects
+    ports:
+      - "5433:5432"
+
+  # In a production environment this would be run as part of CI/CD pipeline.
+  postgres_test:
+    image: postgres
+    environment:
+      - POSTGRES_USER=testuser
+      - POSTGRES_PASSWORD=testpassword
+      - POSTGRES_DB=projects
+    ports:
+      - "5434:5432"

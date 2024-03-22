@@ -1,0 +1,65 @@
+Enum Project_Status {
+  "IN_PROGRESS"
+  "COMPLETE"
+  "PENDING"
+  "CANCELLED"
+}
+
+Enum Freight_Vehicle_Type {
+  "light_commercial"
+  "heavy_truck"
+  "semi_trailer_truck"
+  "flatbed_truck"
+}
+
+Enum Payload_Type {
+  "wood"
+  "oil"
+  "concrete"
+}
+
+Table Project {
+  id char(36) [pk]
+  url varchar(255)
+  status Project_Status
+  country varchar(255)
+  createdDate datetime [default: `now()`]
+  updatedDate datetime [default: `now()`]
+}
+
+Table Trip {
+  id char(36) [pk]
+  projectId char(36) [ref: > Project.id]
+  vehicleId char(36) [ref: > Vehicle.id]
+  distanceKm int
+  createdDate datetime [default: `now()`]
+  updatedDate datetime [default: `now()`]
+}
+
+Table Vehicle {
+  id char(36) [pk]
+  type Vehicle_Type
+  licensePlate varchar(255) [unique]
+  capacity float
+  createdDate datetime [default: `now()`]
+  updatedDate datetime [default: `now()`]
+}
+
+Table Cargo {
+  id char(36) [pk]
+  description varchar(255)
+  weight float
+  payload Payload_Type
+  createdDate datetime [default: `now()`]
+  updatedDate datetime [default: `now()`]
+}
+
+Table TripCargo {
+  tripId char(36) [ref: > Trip.id]
+  cargoId char(36) [ref: > Cargo.id]
+  quantity int
+  status varchar(255)
+  createdDate datetime [default: `now()`]
+  updatedDate datetime [default: `now()`]
+  Primary Key (tripId, cargoId)
+}

@@ -1,0 +1,14 @@
+type Cargo {
+  id: ID!
+  description: String!
+  weight: Float!
+  payload: String!
+  trips: [Trip!]!
+  createdDate: String!
+  updatedDate: String!
+}
+
+type Query {
+  cargos: [Cargo]
+  cargo(id: ID!): Cargo
+}

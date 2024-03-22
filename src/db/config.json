@@ -1,0 +1,18 @@
+{
+  "development": {
+    "username": "clearly",
+    "password": "verysecretpassword",
+    "database": "projects",
+    "host": "localhost",
+    "dialect": "postgres",
+    "port": 5433
+  },
+  "test": {
+    "username": "testuser",
+    "password": "testpassword",
+    "database": "projects",
+    "host": "localhost",
+    "dialect": "postgres",
+    "port": 5434
+  }
+}
