@@ -12,7 +12,29 @@ For example, if you were transporting wood by truck, perhaps it would be more ef
 
 With that in mind I set about creating an API that could show trips, the vehicles used, the cargo transported and the projects that encapsulated them.
 
-To that end the two most useful endpoint is getTripsByProject, there is also CRUD for projects (which is fully tested) and a few other endpoints relating to the other data types.
+To that end the most useful endpoint is getTripsByProject, there is also CRUD for projects (which demonstrates some integration tests) and a few other endpoints relating to the other data types.
+
+### Folder Structure
+
+**`docs`**
+
+- Database structure diagram
+
+**`src/api`**
+
+- Functionally cohesive folder structure for the four main data types: cargo, projects, trip, and vehicle.
+
+**`src/db`**
+
+- Contains models, seeds, migrations, and configuration for the PostgreSQL database.
+
+**`src/graphql`**
+
+- Contains utility functions for aggregating `.graphql` files and amalgamating resolvers.
+
+**`src/services`**
+
+- Contains base class for data type services, complete with data loader for n + 1 and CRUD operations.
 
 ### Prerequisites
 
@@ -24,7 +46,7 @@ Before you begin, ensure you have the following installed:
 
 ### Set Up
 
-[Loom](https://www.loom.com/share/a4686999e5684b619aba5d785d5bf097)
+Here is a video demonstrating setting up the repository and the working API: [Loom](https://www.loom.com/share/a4686999e5684b619aba5d785d5bf097)
 
 The fastest way to setup the project is to:
 
