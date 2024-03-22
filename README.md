@@ -56,7 +56,7 @@ The setup command:
 
 1. Builds the docker containers for both the test and development environments.
 2. Installs dependencies.
-3. Runs migrations that set up the [database structure](./database-structure.png).
+3. Runs migrations that set up the [database structure](./docs/database-structure.png).
 4. Runs seeds to populate the database with mock data.
 5. Creates types from the GraphQL schema.
 6. Begins the server.
